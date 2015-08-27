@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">获投状态</Data></Cell>
+        <Cell><Data ss:Type="String">行业</Data></Cell>
+        <Cell><Data ss:Type="String">子行业</Data></Cell>
+        <Cell><Data ss:Type="String">公司</Data></Cell>
+        <Cell><Data ss:Type="String">网址</Data></Cell>
+        <Cell><Data ss:Type="String">阶段</Data></Cell>
+        <Cell><Data ss:Type="String">时间</Data></Cell>
+        <Cell><Data ss:Type="String">简介</Data></Cell>
+      </Row>
+    <% @contents.each do |content| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= content.ID %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.获投状态).gsub(/\s+/, "").first(2) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.行业).gsub(/\s+/, "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.子行业).gsub(/\s+/, "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= strip_tags (content.公司.present? ? content.公司 : content.标题.try(:gsub, '| IT桔子','')) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.网址).gsub(/\s+/, "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.阶段).gsub(/\s+/, "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.时间).gsub(/\s+/, "") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (strip_tags content.简介).gsub(/\s+/, "") %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

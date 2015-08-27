@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">类型</Data></Cell>
+        <Cell><Data ss:Type="String">行业</Data></Cell>
+
+        <Cell><Data ss:Type="String">公司</Data></Cell>
+        <Cell><Data ss:Type="String">公司抬头</Data></Cell>
+        <Cell><Data ss:Type="String">描述</Data></Cell>
+        <Cell><Data ss:Type="String">链接</Data></Cell>
+      </Row>
+    <% @companies.each do |c| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= c.company_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= c.type_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= c.industry_field %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= c.short %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= c.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= c.desc %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= c.url %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

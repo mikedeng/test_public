@@ -1,0 +1,25 @@
+<h1>Products</h1>
+
+<p>
+  Download:
+  <%= link_to "CSV", contents_path(format: "csv") %> |
+  <%= link_to "Excel", contents_path(format: "xls") %>
+  <%= link_to "companies", companies_path(format: "xls") %>
+</p>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>行业</th>
+    <th>子行业</th>
+    <th>公司</th>
+  </tr>
+  <% @contents.each do |content| %>
+  <tr>
+    <td><%= content.ID %></td>
+    <td><%= strip_tags content.行业 %></td>
+    <td><%= strip_tags content.子行业 %></td>
+    <td><%=  strip_tags content.公司 %></td>
+  </tr>
+  <% end %>
+</table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827071309) do
+ActiveRecord::Schema.define(version: 20150827124359) do
 
   create_table "Content", primary_key: "ID", force: :cascade do |t|
     t.integer "已采",      limit: 1,     default: 0
@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 20150827071309) do
     t.string   "type",           limit: 255
     t.string   "type_name",      limit: 255
     t.string   "industry_field", limit: 255
+    t.string   "city",           limit: 255
+  end
+
+  create_table "exported_companies", force: :cascade do |t|
+    t.integer "company_id", limit: 4
   end
 
 end

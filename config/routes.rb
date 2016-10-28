@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  
+
   get 'contents/index'
 
+  
+  resources  :rests
   resources  :contents
   resources  :companies
 

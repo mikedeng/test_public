@@ -1,3 +1,0 @@
-== README
-
-This project it used for self-testing.
